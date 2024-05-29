@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="normal/base::Layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Add Contact Form</title>
+</head>
+<body>
+           <section>
+            <div class="card mr-3">
+                  <div class="card-body">
+                       <h1 class="text-center">Add Contact</h1>
+                                              <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert" role="alert">
+                              <p th:text="${session.message.content}">
+                              </p>
+                              <th:block th:remove="all"></th:block>
+                         </div>
+                       
+                       <div class="container-fluid mt-1">
+                            <div class="row">
+                                  <div class="col-md-10 offset-md-1">
+                                  <form 
+                                  action=""
+                                  th:object="${contact}"
+                                  enctype="multipart/form-data"
+                                  method="POST"
+                                  th:action="@{/user/process-contact}"
+                                  class="mt-2"
+                                  >
+                                  <div class="input-group">
+                                       <div class="input-group-prepend">
+                                               <div class="input-group-text mr-3">
+                                               <i class="fa fa-plus"></i>
+                                               
+                                               </div>
+                                       
+                                       </div>
+                                       <input type="text" id="firstName" name="name" placeholder="Enter Name here" class="form-control" required/>
+                                  
+                                  
+                                  </div>
+                                  
+                                        <div class="input-group mt-3">
+                                       <div class="input-group-prepend">
+                                               <div class="input-group-text mr-3">
+                                               <i class="fa fa-user-alt"></i>
+                                               
+                                               </div>
+                                       
+                                       </div>
+                                       <input type="text" id="nickName" name="nickname" placeholder="Enter NickName here" class="form-control"/>
+                                  
+                                  
+                                  </div>
+                                  
+                                     <div class="input-group mt-3">
+                                       <div class="input-group-prepend">
+                                               <div class="input-group-text mr-3">
+                                               <i class="fa-solid fa-briefcase"></i>
+                                               
+                                               </div>
+                                       
+                                       </div>
+                                       <input type="text" id="Work" name="work" placeholder="Enter Work here" class="form-control" required/>
+                                  
+                                  
+                                  </div>
+                                  
+                                  <div class="input-group mt-3">
+                                       <div class="input-group-prepend">
+                                               <div class="input-group-text mr-3">
+                                               <i class="fa-regular fa-envelope"></i>
+                                               
+                                               </div>
+                                       
+                                       </div>
+                                       <input type="text" id="Email" name="email" placeholder="Enter Email here" class="form-control" required/>
+                                  
+                                  
+                                  </div>
+                                  
+                                  
+                                    <div class="input-group mt-3 ">
+                                       <div class="input-group-prepend">
+                                               <div class="input-group-text mr-3 ml-3">
+                                               <i class="fa-solid fa-phone"></i>
+                                               
+                                               </div>
+                                       
+                                       </div>
+                                       <input type="number" id="Phone" name="phone" placeholder="Enter Phone here" class="form-control" required/>
+                                  
+                                  
+                                  </div>
+                                  <div class="form-group mt-3">
+                                  <i class="fa-solid fa-circle-info"></i>
+                                         <textarea id="editor" placeholder="Write something about this contact"name="description"    rows="20" class="form-control"></textarea>
+                                  
+                                  </div>
+                                  <div class="custom-file">
+                                  
+                                  <input type="file" name="profileImage"/>
+                                  </div>
+                            
+                                 <div class="container text-center">
+                                 <button class="btn btn-outline-primary">Save Contact</button>
+                                 </div>
+                                  
+                                  
+                                  </form>
+                            
+                            </div>
+                       
+                       </div>
+                  
+                  </div>
+            
+            </div>
+            
+            
+         <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+         <script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+           </section>
+             
+</body>
+</html>
